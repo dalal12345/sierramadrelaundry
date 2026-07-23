@@ -1,8 +1,10 @@
-import React from 'react'
-import { Star, Quote, Sparkles, CheckCircle2 } from 'lucide-react'
+import { Star, Quote, CheckCircle2 } from 'lucide-react'
+
+const RATING_KEYS = ['r1', 'r2', 'r3', 'r4', 'r5']
 
 const REVIEWS = [
   {
+    id: 'rev-1',
     name: 'Sarah M.',
     location: 'Sierra Madre, CA',
     rating: 5,
@@ -10,6 +12,7 @@ const REVIEWS = [
     comment: 'Hands down the cleanest laundromat in the San Gabriel Valley! Being open 24/7 is a lifesaver. I love sitting out on the covered patio with my laptop while the 80lb washer gets my king duvet spotless in 25 mins.',
   },
   {
+    id: 'rev-2',
     name: 'David K.',
     location: 'Pasadena, CA',
     rating: 5,
@@ -17,6 +20,7 @@ const REVIEWS = [
     comment: 'No more digging around for quarters! Pay right on my phone or card. The attendant daytime staff are super helpful, and the facility smells fresh and clean. Highly recommended!',
   },
   {
+    id: 'rev-3',
     name: 'Elena R.',
     location: 'Arcadia, CA',
     rating: 5,
@@ -24,6 +28,7 @@ const REVIEWS = [
     comment: 'Used their Fluff & Fold drop-off service after returning from vacation with 4 bags of laundry. Dropped it off in the morning and picked it up perfectly folded that evening. Worth every penny!',
   },
   {
+    id: 'rev-4',
     name: 'Marcus B.',
     location: 'Altadena, CA',
     rating: 5,
@@ -40,7 +45,6 @@ export function Testimonials() {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-300 text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="size-3.5 text-amber-500" />
             Loved By Our Community
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white">
@@ -53,9 +57,9 @@ export function Testimonials() {
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {REVIEWS.map((rev, idx) => (
+          {REVIEWS.map((rev) => (
             <div 
-              key={idx}
+              key={rev.id}
               className="glass-panel p-8 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between relative"
             >
               <Quote className="size-10 text-sky-500/20 absolute top-6 right-6 pointer-events-none" />
@@ -63,8 +67,8 @@ export function Testimonials() {
               <div>
                 {/* Rating Stars */}
                 <div className="flex items-center gap-1 text-amber-400 mb-4">
-                  {[...Array(rev.rating)].map((_, i) => (
-                    <Star key={i} className="size-4 fill-amber-400" />
+                  {RATING_KEYS.slice(0, rev.rating).map((key) => (
+                    <Star key={`${rev.id}-${key}`} className="size-4 fill-amber-400" />
                   ))}
                 </div>
 
