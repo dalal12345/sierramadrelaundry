@@ -1,0 +1,34 @@
+# Dependencies
+node_modules
+/.pnp
+.pnp.js
+
+# Build and Output directories
+/dist
+/dist-ssr
+/.output
+/.nitro
+/.tanstack
+/.vercel
+/.vinxi
+/.wrangler
+/build
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.local
+
+# Logs and OS files
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+bun.lockb
+.DS_Store
+Thumbs.db
+__unconfig*
+todos.json
